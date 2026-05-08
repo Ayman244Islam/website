@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ayman's Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="home.html" class="logo"><strong>Ayman</strong> <span>'s Portfolio</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+									<li><a href="home.html">Home</a></li>
+									<li><a href="aboutme.html">About Me</a></li>
+							<li><a href="projects.html">Projects</a></li>
+									<li><a href="resume.html">Resume</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Projects</h1>
+									</header>
+
+									<!-- Content -->
+										<p>Here you'll find a selection of projects I've completed to develop and demonstrate my skills in data analysis, SQL querying, and business intelligence. Each project reflects my approach to data work: start with a real-world question, explore the data methodically, and communicate findings in a way that's clear and useful. These projects span public health data, housing data, sales analytics, and interactive dashboarding — showcasing my ability to work across the full analytics workflow, from data cleaning and exploration all the way to visual insight.</p>
+										
+												<h4>List of Projects</h4>
+													<div class="table-wrapper">
+														<table>
+															<thead>
+																<tr>
+																	<th>Project Name</th>
+																	<th>Description</th>
+																	<th>Tools Used</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td><a href="#nashville-housing">Data Cleaning in SQL</a></td>
+																	<td>Transformed raw, inconsistent housing data into a clean, analysis-ready dataset.</td>
+																	<td>SQL, MS Excel</td>
+																</tr>
+																<tr>
+																	<td><a href="#covid-exploration">SQL Data Exploration and Analysis</a></td>
+																	<td>Exploring global pandemic trends using real-world death and vaccination data</td>
+																	<td>SQL, MS Excel</td>
+																</tr>
+																<tr>
+																	<td><a href="#covid-dashboard">Interactive Global Visualization</a></td>
+																	<td>Transformed SQL query outputs into an interactive global visualization</td>
+																	<td>Tableau</td>
+																</tr>
+																<tr>
+																	<td><a href="#bike-sales">Sales Analytics Dashboard</a></td>
+																	<td>An interactive sales dashboard built with slicers and pivot tables.</td>
+																	<td>MS Excel</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+
+									<!-- Project 1: Nashville Housing Data Cleaning in SQL -->
+
+									<hr class="major" />
+
+									<div class="row">
+											<h2 id="nashville-housing">Nashville Housing Data Cleaning in SQL</h2>
+												
+												<br /><p>Real-world data is rarely clean — and this project was built around that reality. Using a raw Nashville housing dataset, I wrote a series of SQL queries to systematically identify and resolve data quality issues, transforming a messy spreadsheet into a structured, reliable dataset ready for analysis or reporting. <br/>The cleaning process covered six key areas:</p>
+								
+											<!-- Break -->
+											<div class="col-10 col-12-medium">
+								
+															<ul>
+															
+																<li><strong>Data Standardization —</strong> converted inconsistent datetime values into a clean, uniform date format by adding a new standardized column using ALTER TABLE and CONVERT()</li><br />
+																<li><strong>Populating missing address data —</strong> identified records with null property addresses and filled them in by matching on shared Parcel IDs using a self-join and ISNULL(), ensuring no property was left without a location</li><br />
+																<li><strong>Splitting address fields —</strong> broke combined address strings into separate, usable columns for street address and city (for property addresses) and address, city, and state (for owner addresses), using both SUBSTRING/CHARINDEX and the more efficient PARSENAME function</li><br />
+																<li><strong>Standardizing categorical values —</strong> identified inconsistent entries in the SoldAsVacant field where some records used "Y/N" and others used "Yes/No," and unified them using a CASE statement</li><br />
+																<li><strong>Removing duplicate records —</strong> used a CTE with ROW_NUMBER() and PARTITION BY across key fields to flag and delete duplicate rows while preserving the original unique entries</li><br />
+																<li><strong>Dropping unused columns —</strong> removed redundant and legacy columns such as the original address field and tax district after the data had been restructured</li>
+															</ul>
+													</div>
+
+										
+												<div class="col-6 col-12-small">
+											
+												<span class="image fit"><img src="images/project4-2.png" alt="" /></span>
+											</div>
+
+											<div class="col-6 col-12-small">
+											
+												<span class="image fit"><img src="images/project4-1.png" alt="" /></span>
+											</div>
+											
+											
+											
+												<p>The project includes both the raw dataset and the fully cleaned output, demonstrating the before-and-after impact of the work.
+
+
+													<br />
+													<strong>Tools Used:</strong> Microsoft SQL Server, T-SQL, Microsoft Excel<br /><br />
+													<strong>Skills Demonstrated: </strong> Data cleaning, data transformation, string manipulation, self-joins, CTEs, deduplication, schema modification, data quality management<br />
+												<div class="col-10 col-12-medium">
+													<ul class="actions">
+														<li><a href="https://github.com/Ayman244Islam/Portfolio/blob/main/Excel%20Project%20Dataset.xlsx" target="_blank" rel="noopener noreferrer" class="button">View on GitHub</a></li>
+													</ul>
+												</div>
+											
+										</div>	
+
+
+										<!-- Project 2: COVID-19 Data Exploration in SQL -->
+										<hr class="major" />
+										<div class="row">
+											<h2 id="covid-exploration">COVID-19 Data Exploration in SQL</h2>
+											<div class="row">
+												<div class="col-6 col-12-medium">
+												
+												<br /><br /><p>This project involved writing and executing a series of SQL queries against a real COVID-19 dataset covering deaths and vaccinations worldwide from 2020 to 2021. The goal was to answer meaningful public health questions by exploring the data from multiple angles.</p>
+												</div>
+											<div class="col-6 col-12-small">
+											
+												<span class="image fit"><img src="images/coviddb.png" alt="" /></span>
+											</div>
+											<!-- Break -->
+											<div class="col-10 col-12-medium">
+											
+												<h4>Key analyses included:</h4>
+															<ul>
+															
+																<li><strong>Death rate by country —</strong> calculating the probability of dying from COVID in Canada by comparing total deaths against total cases over time.</li><br />
+																<li><strong>Infection rate vs. population —</strong> measuring what percentage of each country's population contracted COVID, and ranking countries by highest infection rate.</li><br />
+																<li><strong>Continental death counts —</strong> breaking down total deaths by continent, and identifying a data integrity issue where continent-level records were misattributed.</li><br />
+																<li><strong>Vaccination rollout tracking —</strong> joining the deaths and vaccinations tables to track cumulative vaccinations per country over time using window functions.</li><br />
+															</ul>
+												</div>
+											</div>
+
+					
+											<div class="col-6 col-12-small">
+											
+												<span class="image fit"><img src="images/sqlquery.png" alt="" /></span>
+											</div>
+											<div class="col-6 col-12-medium">
+											
+												<p>The project also demonstrates the use of CTEs, temp tables, and SQL Views to organize and store data for downstream visualization.<br />
+													<br />
+													<strong>Tools Used:</strong> Microsoft SQL Server, T-SQL<br /><br />
+													<strong>Skills Demonstrated:</strong> Data joins, Aggregate functions, Window functions, CTEs, Temp tables, Data cleaning, Logical problem-solving
+													
+													<ul class="actions">
+												<li><a href="https://github.com/Ayman244Islam/Portfolio/blob/main/COVID%20SQL%20Project.sql" target="_blank" rel="noopener noreferrer" class="button">View Query on Github</a></li>
+											</ul>
+											</div>
+										</div>
+
+
+
+										<!-- Project 3: COVID-19 Dashboard in Tableau -->
+
+									<hr class="major" />
+									<div class="row">
+											<h2 id="covid-dashboard">COVID-19 Dashboard in Tableau</h2>
+												
+												<br /><p>Following the SQL exploration, I brought the findings to life in Tableau by building an interactive dashboard that communicates the scale and spread of COVID-19 at a glance. The dashboard presents four key views:</p>
+								
+											<!-- Break -->
+											<div class="col-10 col-12-medium">
+										
+															<ul>
+															
+																<li><strong>Global summary numbers —</strong> total cases, total deaths, and overall death percentage worldwide (150.5M cases, 3.18M deaths, 2.11% death rate).</li><br />
+																<li><strong>Death count by continent — </strong> a colour-coded bar chart showing Europe with the highest death toll, followed by North America and South America.</li><br />
+																<li><strong>Infected population by country —</strong> a world map using a gradient heat map to show infection rates per country, with darker shades indicating higher percentages (up to 17.13%).</li><br />
+																<li><strong>Percent population infected over time —</strong> a line chart tracking infection growth from January 2020 to mid-2021 across eight countries, clearly showing the United States outpacing all others by a significant margin.</li>
+															</ul>
+											</div>
+
+												<span class="image main"><img src="images/dashboard.png" alt="" /></span>
+											
+											
+											
+												<p>The dashboard is designed to be clean, readable, and accessible to a non-technical audience — turning complex query outputs into a story anyone can understand.
+
+
+													<br />
+													<strong>Tools Used:</strong> Tableau Public<br /><br />
+													<strong>Skills Demonstrated: </strong> Data visualization, dashboard design, storytelling with data, map charts, time-series analysis<br />
+												<div class="col-10 col-12-medium">
+													<ul class="actions">
+														<li><a href="https://public.tableau.com/views/COVIDDashboard_17781076279000/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer" class="button">View on Tableau</a></li>
+													</ul>
+												</div>
+											
+										</div>
+
+
+
+										<!-- Project 4: Bike Sales Dashboard in Microsoft Excel -->
+
+									<hr class="major" />
+
+																		
+									<div class="row">
+											<h2 id="bike-sales">Bike Sales Dashboard in Microsoft Excel</h2>
+												
+												<br /><p>This project involved cleaning and analyzing a bike sales dataset in Microsoft Excel and building an interactive dashboard to surface key sales trends. The goal was to make the data explorable for a non-technical business user with no need for formulas or manual filtering.</p>
+								
+											<!-- Break -->
+											<div class="col-10 col-12-medium">
+										
+															<ul>
+															
+																<li><strong>Interactive slicers</strong> allowing users to filter the data by region, marital status, education level, and commute distance</li><br />
+																<li><strong>Pivot charts </strong> visualizing average income by gender and purchase behavior, age bracket breakdowns of buyers vs. non-buyers, and customer commute distance patterns</li><br />
+																<li><strong>A clean, organized layout</strong> designed for quick interpretation by a manager or stakeholder</li>
+															</ul>
+											</div>
+
+												<span class="image main"><img src="images/bikesale.png" alt="" /></span>
+											
+											
+											
+												<p>This project demonstrates the kind of practical, everyday analytics work common in business settings — where Excel remains one of the most widely used tools for reporting and decision-making.
+
+
+													<br />
+													<strong>Tools Used:</strong> Microsoft Excel (Pivot Tables, Slicers, Charts)<br /><br />
+													<strong>Skills Demonstrated: </strong> Data cleaning, pivot table design, dashboard layout, interactive filtering, business reporting<br />
+												<div class="col-10 col-12-medium">
+													<ul class="actions">
+														<li><a href="https://github.com/Ayman244Islam/Portfolio/blob/main/Excel%20Project%20Dataset.xlsx" target="_blank" rel="noopener noreferrer" class="button">Download on GitHub</a></li>
+													</ul>
+												</div>
+											
+										</div>
+
+										
+
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><button type="button" onclick="sendEmail()" class="primary">Send Message</button></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">aymanislamcanada@gmail.com</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Phone</h3>
+										<span>(437) 849-8003</span>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-home"></span>
+										<h3>Location</h3>
+										<span>
+										Toronto, ON <br />
+										Canada</span>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+				function sendEmail() {
+					var name = document.getElementById('name').value;
+					var email = document.getElementById('email').value;
+					var message = document.getElementById('message').value;
+					
+					if (!name || !email || !message) {
+						alert('Please fill in all fields before sending.');
+						return;
+					}
+					
+					var subject = encodeURIComponent(name);
+					var body = encodeURIComponent('From: ' + email + '\n\n' + message);
+					var mailtoLink = 'mailto:aymanislamcanada@gmail.com?subject=' + subject + '&body=' + body;
+					
+					window.location.href = mailtoLink;
+				}
+			</script>
+
+	</body>
+</html>
